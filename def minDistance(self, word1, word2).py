@@ -19,8 +19,4 @@ def hammingDistance(x, y):
                 hd = hd+1
         return hd
 
-def cool(x,y):
-    return bin(x^y).count('1')
-
 print hammingDistance(1,19)
-print cool(1,19)
