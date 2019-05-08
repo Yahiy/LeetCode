@@ -66,3 +66,30 @@ class Solution(object):
                 ans.append(root.val)
                 root = None
         return ans
+    
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        from collections import deque
+        ans = deque()
+        q, h = deque(), deque()
+        q.append(root)
+        h.append(1)
+        while(len(q)):
+            root = q.popleft()
+            h_ = h.popleft()
+            while(len(ans)< h_):
+                ans.appendleft([])
+            ans[-h_].append(root.val)
+            
+            if (root.left):
+                q.append(root.left)
+                h.append(h_+1)
+            if (root.right):
+                q.append(root.right)
+                h.append(h_+1)
+        return ans
