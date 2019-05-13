@@ -93,3 +93,30 @@ class Solution(object):
                 q.append(root.right)
                 h.append(h_+1)
         return ans
+    
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root:
+            return []
+        from collections import deque
+        ans = []
+        q, h = deque(), deque()
+        q.append(root)
+        h.append(0)
+        while(len(q)):
+            root = q.popleft()
+            h_ = h.popleft()
+            while(len(ans)< (h_+1)):
+                ans.append([])
+            ans[h_].append(root.val)
+            
+            if (root.left):
+                q.append(root.left)
+                h.append(h_+1)
+            if (root.right):
+                q.append(root.right)
+                h.append(h_+1)
+        return ans
