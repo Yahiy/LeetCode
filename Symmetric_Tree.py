@@ -1,3 +1,7 @@
+"""
+101.Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+"""
+
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -5,7 +9,7 @@
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+class SolutionWithoutRecusion(object):
     def isSymmetric(self, root):
         """
         :type root: TreeNode
@@ -55,5 +59,33 @@ class Solution(object):
             return self.TreeDepth(root.left) + 1
         else:
             return max(self.TreeDepth(root.left), self.TreeDepth(root.right)) + 1
+       
+    
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        return self.isSymmetricTwo(root, root)
+      
+    def isSymmetricTwo(self, root1, root2):
+        if root1 is None and root2 is None:
+            return True
+        elif root1 is not None and root2 is not None:
+            if root1.val != root2.val:
+                return False
+            else:
+                return self.isSymmetricTwo(root1.left, root2.right) and self.isSymmetricTwo(root1.right, root2.left)
+        else:
+            return False
+        
         
         
