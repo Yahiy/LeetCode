@@ -17,6 +17,7 @@ Example 2:
 Input: [4,5,6,7,0,1,2]
 Output: 0
 """
+#leetcode
 class Solution(object):
     def findMin(self, nums):
         """
@@ -39,6 +40,31 @@ class Solution(object):
             if nums[mid - 1] > nums[mid]:
                 return nums[mid]
             if(nums[mid] > nums[s]):
+                s = mid+1
+            else:
+                e = mid-1
+# myself
+class Solution(object):
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        
+        s,e = 0, n-1
+        mid = 0
+        while(s<=e):
+            mid = (s+e)/2
+            print(s,e,mid)
+            if nums[mid] > nums[mid + 1]:
+                return nums[mid + 1]
+            if nums[mid - 1] > nums[mid]:
+                return nums[mid]
+            if nums[mid] > nums[s] and nums[mid] > nums[e]:
                 s = mid+1
             else:
                 e = mid-1
