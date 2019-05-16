@@ -139,6 +139,9 @@ Output: 0
 [1,1]
 [5,1,5,5,5]
 [5,5,5,1,5]
+
+if nums[mid] == nums[s]:
+    s += 1
 """
 class Solution(object):
     def findMin(self, nums):
