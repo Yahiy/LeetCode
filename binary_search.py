@@ -116,3 +116,64 @@ class Solution(object):
             else:
                 e = mid-1
         
+
+"""
+154. Find Minimum in Rotated Sorted Array II
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element.
+
+The array may contain **duplicates**.
+
+Example 1:
+
+Input: [1,3,5]
+Output: 1
+Example 2:
+
+Input: [2,2,2,0,1]
+Output: 0
+
+[1,1]
+[5,1,5,5,5]
+[5,5,5,1,5]
+"""
+class Solution(object):
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+                
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        if nums[0] < nums[-1]:
+            return nums[0]
+        
+        s,e = 0, n-1
+        mid = 0
+        while(s<e):
+            print(s,e)
+            mid = (s+e)/2
+            
+            if nums[mid] > nums[mid + 1]:
+                return nums[mid + 1]
+            if nums[mid - 1] > nums[mid]:
+                return nums[mid]
+            if nums[mid] == nums[s]:
+                s += 1
+            elif nums[mid] > nums[s] and nums[mid] > nums[e]:
+                s = mid+1
+            else:
+                e = mid-1
+        if s==e:
+            return nums[s]
+        
+
+
+
+
+
