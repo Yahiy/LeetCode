@@ -201,6 +201,48 @@ class Solution(object):
         if s==e:
             return nums[s]
         
+"""        
+540. Single Element in a Sorted Array
+Medium
+Share
+Given a sorted array consisting of only integers where every element 
+appears exactly twice except for one element which appears exactly once. 
+Find this single element that appears only once.
+
+Example 1:
+Input: [1,1,2,3,3,4,4,8,8]
+Output: 2
+Example 2:
+Input: [3,3,7,7,10,11,11]
+Output: 10
+"""
+class Solution(object):
+    def singleNonDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        s,e = 0, n-1
+        if nums[s] != nums[s+1]:
+            return nums[s]
+        if nums[e] != nums[e-1]:
+            return nums[e]
+        
+        while(s<=e):
+            m = (s+e)//2
+            left,mid,right = nums[m-1], nums[m], nums[m+1]
+            if mid != left and mid != right :
+                return nums[m]
+            elif m%2 == 0 and mid==left or m%2==1 and mid==right:
+                e = m-1
+            else:
+                s = m+1
+        return None
+            
+      
 
 
 
