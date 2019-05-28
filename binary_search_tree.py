@@ -43,6 +43,24 @@ class Solution(object):
         """
         ans = self.inorderTraversal(root,k)
         return ans[-1]
+   
+   def kthSmallest2(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        ans = [] #output
+        s = []   # stack
+        while root or len(s):
+            while root:
+                s.append(root)
+                root = root.left
+            root = s.pop()
+            ans.append(root.val)
+            if len(ans) == k:
+                return root.val
+            root = root.right
         
     def inorderTraversal(self, root, k):
         """
