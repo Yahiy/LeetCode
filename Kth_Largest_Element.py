@@ -51,4 +51,43 @@ class Solution(object):
             else:
                 e = m-1
         
-        
+ 
+"""
+partition
+"""
+import random
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        n = len(nums)
+        start,end = 0,n-1
+        index = self.partition(nums, start, end)
+        while index != k - 1:
+            if index > k - 1:
+                end = index - 1
+                index = self.partition(nums, start, end)
+            else:
+                start = index + 1
+                index = self.partition(nums, start, end)
+        return nums[k-1]
+    
+    def partition(self,nums,s,e):
+        index = random.randint(s, e)
+        nums[s], nums[e] = nums[e], nums[s]
+
+        small = s - 1
+        for index in range(s,e):
+            # reverse = True:  nums[index] > nums[e]
+            # reverse = False: nums[index] < nums[e]
+            if nums[index] > nums[e]:
+                small += 1
+                if small != index:
+                    nums[index], nums[small] = nums[small], nums[index]
+
+        small += 1
+        nums[small], nums[e] = nums[e], nums[small]
+        return small
