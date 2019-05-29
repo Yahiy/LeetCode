@@ -1,7 +1,7 @@
 
-##96. Unique Binary Search Trees
+### 96. Unique Binary Search Trees
 
-$$C_0 = 1$$
+$$ C_0 = 1 $$
 $$C_{n+1} = \sum^n_{i=0} C_iC_{n-i}$$
 
 ```
