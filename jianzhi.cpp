@@ -16,3 +16,30 @@ public:
 
     }
 };
+
+//
+请实现一个函数，把字符串 s 中的每个空格替换成"%20"
+//
+class Solution {
+public:
+    string replaceSpace(string s) {
+        int n = s.size();
+        int count = 0;
+        for (char c:s){
+            if (c == ' ') count++;
+        }
+        s.resize(n+2*count);
+        for(int i=n-1,j=s.size()-1; i<j; i--,j--){
+            if (s[i] != ' ') s[j] = s[i];
+            else {
+                s[j] = '0';
+                s[j-1] = '2';
+                s[j-2] = '%';
+                j-=2;
+            }
+        }
+        return s;
+    }
+};
+
+
